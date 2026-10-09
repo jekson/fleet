@@ -1,0 +1,13 @@
+[digitalocean]
+token = ""
+droplet_id = 0
+database_id = ""
+poll_seconds = 60
+
+[alerts]
+cpu_pct = 90
+cpu_for_minutes = 5
+mem_pct = 90
+disk_pct = 85
+db_cpu_pct = 90
+db_disk_pct = 85

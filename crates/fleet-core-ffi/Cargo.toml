@@ -34,9 +34,12 @@ uniffi.workspace = true
 hex.workspace = true
 # Bulk runs, snippets/runbooks and the MCP socket (design §7.3, §2.3, §8).
 fleetctl-proto.workspace = true
-# Built-in profile catalog for Settings → Profiles (read only).
-fleet-hardening.workspace = true
 serde_json.workspace = true
+
+# Built-in profile catalog for Settings → Profiles (read only). Unix only:
+# it pulls fleet-ops (Linux agent code); the Windows client builds without it.
+[target.'cfg(unix)'.dependencies]
+fleet-hardening.workspace = true
 
 [dev-dependencies]
 tempfile.workspace = true

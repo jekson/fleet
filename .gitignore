@@ -12,3 +12,9 @@ xcuserdata/
 .serena/
 /dist/
 __pycache__/
+
+# Windows client: local keys, cache and secrets
+/windows/data/
+/windows/config.local.toml
+/windows/node_modules/
+/windows/src-tauri/gen/

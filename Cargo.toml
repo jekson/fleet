@@ -14,6 +14,8 @@ members = [
     "crates/fleet-debver",
     "crates/fleet-cloudinit",
     "crates/fleet-compose",
+    "crates/fleet-do",
+    "windows/src-tauri",
 ]
 # cargo-fuzz crate: own workspace, nightly toolchain.
 exclude = ["fuzz"]
@@ -44,6 +46,7 @@ fleet-debver = { path = "crates/fleet-debver" }
 fleet-hardening = { path = "crates/fleet-hardening" }
 fleet-cloudinit = { path = "crates/fleet-cloudinit" }
 fleet-compose = { path = "crates/fleet-compose" }
+fleet-do = { path = "crates/fleet-do" }
 
 # Serialization
 serde = { version = "1.0.229", features = ["derive"] }

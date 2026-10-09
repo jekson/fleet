@@ -70,7 +70,7 @@ pub use docker_ops::{DockerLogSink, DockerStatsSink, compose_validate};
 pub use enrollment::Enrollment;
 pub use files::TransferListener;
 pub use fleet_mgmt::{CloudRecordRow, FleetListener, SyncSecrets};
-pub use install::InstallListener;
+pub use install::{InstallArtifact, InstallListener};
 pub use mcp::{McpConnection, McpDelegate};
 pub use provision::*;
 pub use recovery::RecoverySession;

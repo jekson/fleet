@@ -10,7 +10,9 @@ use crate::text;
 use crate::types::{AlertSeverity, FleetError};
 use fleet_core::roster_mgmt as rm;
 use fleet_core::sync::Collection;
+#[cfg(unix)]
 use fleet_hardening::{modules, profile};
+#[cfg(unix)]
 use fleet_proto::op::{ProfileLevel, ProfileRole};
 use fleet_proto::alert::{AlertKind, AlertRule, AlertRuleSet, Severity};
 use fleet_proto::args::{AbsPath, CheckId, ContainerName, RuleId, UnitName};
@@ -394,6 +396,7 @@ pub struct ProfileCatalogRow {
     pub firewall_rules: u32,
 }
 
+#[cfg(unix)]
 fn module_rows(ids: &[String]) -> Vec<ProfileModuleRow> {
     ids.iter()
         .map(|id| ProfileModuleRow {
@@ -403,6 +406,14 @@ fn module_rows(ids: &[String]) -> Vec<ProfileModuleRow> {
         .collect()
 }
 
+/// Empty off Unix: no fleet-hardening there (the Windows client does no
+/// provisioning).
+#[cfg(not(unix))]
+pub(crate) fn profile_catalog() -> Vec<ProfileCatalogRow> {
+    Vec::new()
+}
+
+#[cfg(unix)]
 pub(crate) fn profile_catalog() -> Vec<ProfileCatalogRow> {
     let base = profile::builtin(ProfileLevel::Baseline, &[]).ok();
     let strict = profile::builtin(ProfileLevel::Strict, &[]).ok();
